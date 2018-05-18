@@ -30,6 +30,14 @@ $true_password = $row['user_password']; // 正确的密码
 // 4.3.2 判断用户提交的密码是否和正确的密码相等
 if(md5($user_password) === $true_password) {
 	// 验证成功
+	// 判断是否够远了"7天免登陆"
+	if(isset($_POST['remember'])) {
+		// 说明用户勾选了
+		setcookie('user_id',$row['user_id'],time()+604800,'/');
+	}
+	// 为用户建立会话数据区，保存该用户信息
+	session_start();
+	$_SESSION['userInfo'] = $row;
 	jump('./publish.php','登录成功，2秒后跳转到发帖页面！');
 }else {
 	// 验证失败

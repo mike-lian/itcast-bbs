@@ -3,6 +3,12 @@
 // 1, 加载初始化文件
 include '../init.php';
 
+// 6, 判断用户是否登陆
+session_start();
+if(!isset($_SESSION['userInfo'])) {
+	// 说明用户没有登陆
+	jump('./login.php','请您先登陆!');
+}
 // 2, 加载数据库连接文件
 include DIR_CORE . 'MySQLDB.php';
 

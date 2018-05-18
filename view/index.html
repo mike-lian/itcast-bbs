@@ -24,8 +24,20 @@
 				</form>
 			</div>
 			<div class="login">
-				<a>登录</a>&nbsp;
-				<a href="./model/register.php">注册</a>
+				<?php 
+					if(isset($_SESSION['userInfo'])) {
+						echo "<font color=#FFF;>","欢迎您,",$_SESSION['userInfo']['user_name'],"</font>",'&nbsp;';
+						echo '<a href="./model/upload_image.php">上传头像</a>&nbsp;';
+					}else {
+					echo	'<a href="./model/login.php">登录</a>&nbsp;';
+						'<a href="./model/register.php">注册</a>&nbsp;';
+						
+					}
+					?>
+					<a href="./model/logout.php">注销</a>
+
+				 
+				
 			</div>
 		</div>
 	</div>

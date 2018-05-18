@@ -17,9 +17,13 @@ if(empty($rep_content)) {
 }
 
 // 5, 数据入库
-$rep_user = '匿名';
+// $rep_user = '匿名';
+// 提取当前用户信息
+session_start();
+$rep_user = $_SESSION['userInfo']['user_name'];
+
 $rep_time = time();
-$sql = "insert into reply values(null,$rep_pub_id,'$rep_user','$rep_content',$rep_time)";
+$sql = "insert into reply values(null,$rep_pub_id,'$rep_user','$rep_content',$rep_time,default,default)";
 
 // 执行
 $result = my_query($sql);

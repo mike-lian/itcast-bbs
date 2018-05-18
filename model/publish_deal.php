@@ -17,7 +17,10 @@ if(empty($pub_title) || empty($pub_content)) {
 }
 
 // 5, 数据入库
-$pub_owner = '游客'; // 此时应该是登陆者的名字
+// $pub_owner = '游客'; // 此时应该是登陆者的名字
+// 提取用户的当前信息
+session_start();
+$pub_owner = $_SESSION['userInfo']['user_name'];
 $pub_time = time();
 $sql = "insert into publish value(null,'$pub_title','$pub_content','$pub_owner',$pub_time,default)";
 $result = my_query($sql);

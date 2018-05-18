@@ -89,7 +89,8 @@
 
 				<div class="pubdate">
 					<span class="date">回复时间：<?php echo date('Y-m-d H:i:s',$rep_row['rep_time']); ?> </span>
-					<span class="floor"><?php echo $i++ ?>楼</span>
+					<span class="floor"><?php echo $i++ ?>楼&nbsp;|&nbsp;<a href="./quote.php?num=<?php echo $i-1; ?>&pub_id=<?php echo $row['pub_id'];?>&rep_id=<?php echo $rep_row['rep_id'];?>">引用</a></span>
+
 				</div>
 				<div class="content">
 					 <?php echo $rep_row['rep_content']; ?>
